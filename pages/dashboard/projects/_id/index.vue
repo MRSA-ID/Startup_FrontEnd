@@ -73,12 +73,22 @@
           <h3 class="text-2xl text-gray-900 mb-4 mt-5">Gallery</h3>
         </div>
         <div class="w-2/4 text-right">
-          <input
+          <!-- <input
             type="file"
             ref="file"
             @change="selectFile"
             class="border p-1 rounded overflow-hidden"
-          />
+          /> -->
+          <label class="block">
+            <span class="sr-only">Choose profile photo</span>
+            <input type="file" ref="file" @change="selectFile" class="block w-full text-sm text-slate-500
+              file:mr-4 file:py-2 file:px-4
+              file:rounded-full file:border-0
+              file:text-sm file:font-semibold
+              file:bg-blue-50 file:text-blue-700
+              hover:file:bg-blue-100
+            "/>
+          </label>
           <button
             @click="upload"
             class="bg-green-button hover:bg-green-button text-white font-bold px-4 py-2 rounded inline-flex items-center"

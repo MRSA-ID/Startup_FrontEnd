@@ -28,7 +28,7 @@
         </div>
       </div>
     </section>
-    <section class="container mx-auto pt-24">
+    <section class="container mx-auto mt-36 lg:mt-0 pt-24">
       <div class="flex justify-between items-center mb-10">
         <div class="w-auto">
           <h2 class="text-3xl text-gray-900 mb-8">
@@ -94,7 +94,7 @@
           >
         </div>
       </div>
-      <div class="grid grid-cols-3 gap-4 mt-3">
+      <div class="grid px-10 md:px-0 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-3">
         <div
           v-for="campaign in campaigns.data"
           :key="campaign.id"
@@ -131,7 +131,7 @@
               </div>
               <div class="flex progress-info">
                 <div>
-                  {{ (campaign.current_amount / campaign.goal_amount) * 100 }}%
+                  {{ ((campaign.current_amount / campaign.goal_amount) * 100).toFixed(1) }}%
                 </div>
                 <div class="ml-auto font-semibold">
                   Rp {{ new Intl.NumberFormat().format(campaign.goal_amount) }}
@@ -168,7 +168,7 @@
         </div>
         <div class="w-8/12 mt-16">
           <h2 class="text-3xl text-gray-900 font-light">
-            “Funding at Bucker is very easy and comfortable. <br />
+            “Funding at GoFund is very easy and comfortable. <br />
             Just need to find an idea, click and already funding.”
           </h2>
           <div class="testimonial-info mt-8">

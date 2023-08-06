@@ -41,15 +41,15 @@
           >
             <h3>Project Leader:</h3>
 
-            <div class="flex mt-3">
-              <div class="w-1/4">
+            <div class="flex flex-col lg:flex-row mt-3 text-center lg:text-left">
+              <div class="lg:w-max flex justify-center lg:justify-start">
                 <img
                   :src="$axios.defaults.baseURL + campaign.data.user.image_url"
                   alt=""
-                  class="w-full h-full object-cover object-top inline-block rounded-full"
+                  class="h-14 w-14 lg:h-20 lg:w-20 rounded-full inline-block"
                 />
               </div>
-              <div class="w-3/4 ml-5 mt-1">
+              <div class="lg:w-3/4 lg:ml-5 mt-1">
                 <div class="font-semibold text-xl text-gray-800">
                   {{ campaign.data.user.name }}
                 </div>
@@ -65,10 +65,12 @@
             </ul>
             <template v-if="this.$store.state.auth.loggedIn">
               <input
-                type="number"
+                type="text"
                 class="border border-gray-500 block w-full px-6 py-3 mt-4 rounded-full text-gray-800 transition duration-300 ease-in-out focus:outline-none focus:shadow-outline"
                 placeholder="Amount in Rp"
-                v-model.number="transactions.amount"
+                v-model="displayValue"
+                @blur="isInputActive = false" @focus="isInputActive = true"
+                @keypress="(e) => checkInput(e)"
                 @keyup.enter="fund"
               />
               <button
@@ -111,7 +113,7 @@
             </div>
           </div>
           <div class="flex progress-info mb-6">
-            <div class="text-2xl">{{(campaign.data.current_amount / campaign.data.goal_amount) * 100}}%</div>
+            <div class="text-2xl">{{((campaign.data.current_amount / campaign.data.goal_amount) * 100).toFixed(1)}}%</div>
             <div class="ml-auto font-semibold text-2xl">Rp {{new Intl.NumberFormat().format(campaign.data.goal_amount) }}</div>
           </div>
 
@@ -122,8 +124,8 @@
         <div class="w-1/4 hidden md:block"></div>
       </div>
     </section>
-    <div class="cta-clip -mt-20"></div>
-    <CallToAction/>
+    <div class="pt-64 pb-10"></div>
+    <!-- <CallToAction/> -->
     <Footer/>
   </div>
 </template>
@@ -138,8 +140,29 @@ export default{
     return{
       default_image: '',
       transactions:{
-        amount:0,
+        amount:10000,
         campaign_id: Number.parseInt(this.$route.params.id)
+      },
+      isInputActive: false
+    }
+  },
+  computed:{
+    displayValue:{
+      get: function(){
+        if (this.isInputActive) {
+            return this.transactions.amount.toString()
+        } else {
+            return "Rp " + this.transactions.amount.toFixed(0).replace(/(\d)(?=(\d{3})+(?:\.\d+)?$)/g, "$1\.")
+        }
+      },
+      set: function(modifiedValue) {
+          console.log('modifiedValue: ',modifiedValue)
+          let newValue = parseFloat(modifiedValue.replace(/[^\d\.]/g, ""))
+          // Ensure that it is not NaN
+          if (isNaN(newValue)) {
+              newValue = 0
+          }
+          this.transactions.amount = newValue
       }
     }
   },
@@ -154,6 +177,14 @@ export default{
         console.log(response)
       } catch (error) {
         console.log(error)
+      }
+    },
+    checkInput(e){
+      const char = e.key
+      const isNumber = /^\d+$/.test(char)
+
+      if (!isNumber) {
+        e.preventDefault()
       }
     }
   },
