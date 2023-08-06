@@ -9,7 +9,7 @@ import {
   getMatchedComponents,
   promisify
 } from './utils.js'
-  import fetchMixin from './mixins/fetch.server'
+  import fetchMixin from './mixins/fetch.server.js'
 import { createApp, NuxtError  } from './index.js'
 import NuxtLink from './components/nuxt-link.server.js' // should be included after ./index.js
 

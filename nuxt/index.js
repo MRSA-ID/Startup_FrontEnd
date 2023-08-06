@@ -8,7 +8,7 @@ import NuxtChild from './components/nuxt-child.js'
 import NuxtError from '..\\layouts\\error.vue'
 import Nuxt from './components/nuxt.js'
 import App from './App.js'
-import { setContext, getLocation, getRouteData, normalizeError } from './utils'
+import { setContext, getLocation, getRouteData, normalizeError } from './utils.js'
 import { createStore } from './store.js'
 
 /* Plugins */

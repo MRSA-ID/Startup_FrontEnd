@@ -19,7 +19,7 @@ import {
   urlJoin
 } from './utils.js'
 import { createApp, NuxtError } from './index.js'
-import fetchMixin from './mixins/fetch.client'
+import fetchMixin from './mixins/fetch.client.js'
 import NuxtLink from './components/nuxt-link.client.js' // should be included after ./index.js
 
 // Fetch mixin
