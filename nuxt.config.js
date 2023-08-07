@@ -53,13 +53,16 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: development ? 'http://localhost:8080/' : process.env.BASE_URL,
-    Headers: [
-      { key: "Access-Control-Allow-Credentials", value: "true" },
-      { key: "Access-Control-Allow-Origin", value: "*" },
-      { key: "Access-Control-Allow-Methods", value: "GET,OPTIONS,PATCH,DELETE,POST,PUT" },
-      { key: "Access-Control-Allow-Headers", value: "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version" },
-    ]
+    baseURL: development ? 'http://localhost:8080/' : process.env.BASE_URL
+  },
+
+  proxy:{
+    '/api':{
+      target: "https://d662-103-136-58-125.ngrok-free.app",
+      pathRewrite:{
+        "^/api/v1":""
+      }
+    }
   },
 
   auth: {
