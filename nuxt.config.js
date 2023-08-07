@@ -1,4 +1,4 @@
-let development = process.env.NUXT_NODE_ENV !== 'production';
+let development = process.env.NODE_ENV !== 'production';
 
 export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
@@ -9,7 +9,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'startup-frontend',
+    title: 'GoFund',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -53,7 +53,7 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: development ? 'http://localhost:8080/' : process.env.NUXT_BASE_URL,
+    baseURL: development ? 'http://localhost:8080/' : process.env.BASE_URL,
   },
 
   auth: {

@@ -1,4 +1,4 @@
-# startup-frontend
+# GoFund
 
 ## Build Setup
 
