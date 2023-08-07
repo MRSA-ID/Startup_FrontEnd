@@ -207,7 +207,11 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    const campaigns = await $axios.$get('/api/v1/campaigns')
+    const campaigns = await $axios.$get('/api/v1/campaigns', {
+      headers : {
+        'ngrok-skip-browser-warning':true
+      }
+    })
     return { campaigns }
   },
 }
