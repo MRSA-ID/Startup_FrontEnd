@@ -107,7 +107,9 @@
 export default {
   middleware: 'auth',
   async asyncData({ $axios }) {
-    const { data:users} = await $axios.$get('/api/v1/users/fetch')
+    const { data:users} = await $axios.$get('/api/v1/users/fetch',{
+      headers: { "ngrok-skip-browser-warning": true }
+    })
     // console.log(users)
     return { users }
   },

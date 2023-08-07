@@ -87,7 +87,9 @@ export default {
   middleware: 'auth',
   async asyncData({ $axios, app }) {
     const campaigns = await $axios.$get(
-      '/api/v1/campaigns?user_id=' + app.$auth.user.id
+      '/api/v1/campaigns?user_id=' + app.$auth.user.id,{
+      headers: { "ngrok-skip-browser-warning": true }
+    }
     )
     return { campaigns }
   },

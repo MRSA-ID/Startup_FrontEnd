@@ -133,7 +133,9 @@
 <script>
 export default{
   async asyncData({$axios, params}){
-    const campaign = await $axios.$get('/api/v1/campaigns/' + params.id)
+    const campaign = await $axios.$get('/api/v1/campaigns/' + params.id,{
+      headers: { "ngrok-skip-browser-warning": true }
+    })
     return { campaign }
   },
   data(){

@@ -71,7 +71,9 @@
 export default{
   middleware: 'auth',
   async asyncData({$axios, app}){
-    const transactions = await $axios.$get('/api/v1/transactions');
+    const transactions = await $axios.$get('/api/v1/transactions',{
+      headers: { "ngrok-skip-browser-warning": true }
+    });
     return {transactions}
   }
 }
