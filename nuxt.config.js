@@ -72,7 +72,7 @@ export default {
         endpoints: {
           login: { url: '/api/v1/sessions', method: 'post'},
           logout: false,
-          user: { url: '/api/v1/users/fetch', method: 'get',  }
+          user: { url: '/api/v1/users/fetch', method: 'get', headers: { "ngrok-skip-browser-warning": true }}
         }
       }
     }
