@@ -72,7 +72,7 @@ export default {
           // autoFetch: true
         },
         endpoints: {
-          login: { url: '/api/v1/sessions', method: 'post'},
+          login: { url: '/api/v1/session', method: 'post'},
           logout: false,
           user: { url: '/api/v1/users/fetch', method: 'get',  }
         }
