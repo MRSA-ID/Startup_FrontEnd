@@ -56,15 +56,6 @@ export default {
     baseURL: development ? 'http://localhost:8080/' : process.env.BASE_URL
   },
 
-  proxy:{
-    '/api':{
-      target: "https://d662-103-136-58-125.ngrok-free.app",
-      pathRewrite:{
-        "^/api/v1":""
-      }
-    }
-  },
-
   auth: {
     strategies: {
       local: {
