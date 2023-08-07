@@ -207,7 +207,7 @@
 <script>
 export default {
   async asyncData({ $axios }) {
-    const campaigns = await $axios.$get('/api/v1/campaigns', {headers: { 'Access-Control-Allow-Origin': '*'}})
+    const campaigns = await $axios.$get('/api/v1/campaigns')
     return { campaigns }
   },
 }
